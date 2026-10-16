@@ -289,16 +289,18 @@ html[dir="ltr"] .usp-item {
     line-height: 1.8;
 }
 
-/* Lookbook Carousel Section */
+/* ==========================================
+   Lookbook Carousel Section (تم حل مشكلة الـ RTL والجوال نهائياً)
+   ========================================== */
 .lookbook-section {
     max-width: 1400px;
-    margin: 50px auto 20px;
-    padding: 0 20px;
+    margin: 40px auto 20px;
+    padding: 0 15px;
     overflow: hidden;
 }
 
 .lookbook-header {
-    margin-bottom: 25px;
+    margin-bottom: 20px;
     text-align: right;
 }
 
@@ -308,48 +310,38 @@ html[dir="ltr"] .lookbook-header {
 
 .lookbook-main-title {
     font-family: var(--font-heading);
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     font-weight: 400;
-    letter-spacing: 2px;
+    letter-spacing: 1.5px;
 }
 
 .lookbook-carousel-container {
     display: flex;
-    gap: 20px;
+    gap: 15px;
     overflow-x: auto;
     scroll-behavior: smooth;
     padding-bottom: 15px;
     scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
-    direction: ltr; /* فرض اتجاه LTR للحاوية برمجياً لضمان عمل السلايدر وثبات البداية والنهاية في اللغتين */
 }
 
-/* إعادة اتجاه المحتوى الداخلي للكروت إلى الوضع الصحيح حسب لغة الصفحة */
+/* حل جذري لظهور الكروت باللغة العربية ودورانها بسلاسة من اليمين */
 html[dir="rtl"] .lookbook-carousel-container {
-    transform: scaleX(-1); /* عكس اتجاه الحاوية في العربي لتظهر من اليمين بالشكل الصحيح */
+    flex-direction: row-reverse;
 }
-
-html[dir="rtl"] .lookbook-card {
-    transform: scaleX(-1); /* إعادة عكس محتوى الكارت ليظهر النص والصورة بشكل طبيعي غير مقلوب */
-}
-
-.lookbook-carousel-container::-webkit-scrollbar {
-    display: none;
-}
-
 
 .lookbook-carousel-container::-webkit-scrollbar {
     display: none;
 }
 
 .lookbook-card {
-    min-width: 380px;
-    height: 480px;
+    min-width: 350px;
+    height: 450px;
     position: relative;
     overflow: hidden;
     cursor: pointer;
     flex-shrink: 0;
-    border-radius: 12px;
+    border-radius: 10px;
 }
 
 .lookbook-card img {
@@ -365,12 +357,15 @@ html[dir="rtl"] .lookbook-card {
 
 .lookbook-overlay {
     position: absolute;
-    bottom: 0; left: 0; width: 100%; height: 100%;
-    background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0) 60%);
+    bottom: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 60%);
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    padding: 30px;
+    padding: 25px;
     color: #fff;
     text-align: right;
 }
@@ -381,14 +376,13 @@ html[dir="ltr"] .lookbook-overlay {
 
 .lookbook-overlay h3 {
     font-family: var(--font-heading);
-    font-size: 1.6rem;
-    margin-bottom: 8px;
+    font-size: 1.4rem;
+    margin-bottom: 6px;
     font-weight: 400;
-    letter-spacing: 1px;
 }
 
 .lookbook-overlay span {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     letter-spacing: 2px;
     text-transform: uppercase;
     font-weight: 600;
@@ -975,9 +969,12 @@ html[dir="ltr"] .contact-item:hover {
         gap: 12px;
     }
 
+    /* ضبط مقاس الكارت المثالي للجوال ليترك مساحة للكارت التالي لتبين الفخامة */
     .lookbook-card {
-        min-width: 220px !important;
-        height: 310px !important;
+        min-width: 250px !important;
+        width: 250px !important;
+        max-width: 250px !important;
+        height: 340px !important;
         border-radius: 8px;
     }
 
@@ -1022,134 +1019,5 @@ html[dir="ltr"] .contact-item:hover {
         grid-template-columns: 1fr;
         gap: 30px;
         text-align: center;
-    }
-}
-/* ==========================================
-   تنسيق احترافي لقسم التشكيلة المميزة (Lookbook) للهواتف والشاشات
-   ========================================== */
-
-.lookbook-section {
-    max-width: 1400px;
-    margin: 40px auto 20px;
-    padding: 0 15px;
-    overflow: hidden;
-}
-
-.lookbook-header {
-    margin-bottom: 20px;
-    text-align: right;
-}
-
-html[dir="ltr"] .lookbook-header {
-    text-align: left;
-}
-
-.lookbook-main-title {
-    font-family: var(--font-heading);
-    font-size: 1.6rem;
-    font-weight: 400;
-    letter-spacing: 1.5px;
-}
-
-.lookbook-carousel-container {
-    display: flex;
-    gap: 15px;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    padding-bottom: 15px;
-    scrollbar-width: none;
-    -webkit-overflow-scrolling: touch;
-}
-
-.lookbook-carousel-container::-webkit-scrollbar {
-    display: none;
-}
-
-/* مقاس الكارت الافتراضي للكمبيوتر */
-.lookbook-card {
-    min-width: 350px;
-    height: 450px;
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-    flex-shrink: 0;
-    border-radius: 10px;
-}
-
-.lookbook-card img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.6s ease;
-}
-
-.lookbook-card:hover img {
-    transform: scale(1.05);
-}
-
-.lookbook-overlay {
-    position: absolute;
-    bottom: 0; 
-    left: 0; 
-    width: 100%; 
-    height: 100%;
-    background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 60%);
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 25px;
-    color: #fff;
-    text-align: right;
-}
-
-html[dir="ltr"] .lookbook-overlay {
-    text-align: left;
-}
-
-.lookbook-overlay h3 {
-    font-family: var(--font-heading);
-    font-size: 1.4rem;
-    margin-bottom: 6px;
-    font-weight: 400;
-}
-
-.lookbook-overlay span {
-    font-size: 0.75rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    font-weight: 600;
-    border-bottom: 1px solid #fff;
-    width: fit-content;
-    padding-bottom: 2px;
-}
-
-/* تخصيص دقيق ومثالي لشاشات الهواتف (Mobile View) */
-@media (max-width: 768px) {
-    .lookbook-section {
-        margin: 25px auto 10px;
-        padding: 0 12px;
-    }
-
-    .lookbook-main-title {
-        font-size: 1.3rem;
-    }
-
-    .lookbook-carousel-container {
-        gap: 12px;
-    }
-
-    /* جعل عرض الكارت مناسباً جداً لشاشة الموبايل ليظهر جزء من الكارت التالي */
-    .lookbook-card {
-        min-width: 260px !important;
-        height: 350px !important;
-        border-radius: 8px;
-    }
-
-    .lookbook-overlay {
-        padding: 20px;
-    }
-
-    .lookbook-overlay h3 {
-        font-size: 1.2rem;
     }
 }
