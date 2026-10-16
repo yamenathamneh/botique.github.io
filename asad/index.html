@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The I Boutique | ذا آي بوتيك</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Montserrat:wght@200;300;400;500;600;700&family=Noto+Kufi+Arabic:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Style CSS Link -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Top Announcement Bar -->
+    <div class="announcement-bar">
+        <span id="announcement-text">توصيل لجميع مناطق الأردن 📦 | الدفع عند الاستلام 🚚</span>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="header">
+        <div class="nav-left">
+            <button class="icon-btn mobile-menu-btn" onclick="toggleMobileMenu()"><i class="fa-solid fa-bars"></i></button>
+            <button class="lang-switch-btn" onclick="toggleLanguage()" id="lang-btn">EN</button>
+            <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="search-input" placeholder="بحث عن منتجات..." onkeyup="filterProducts()">
+            </div>
+        </div>
+
+        <div class="brand-logo">
+            <a href="#">THE I BOUTIQUE</a>
+            <p>SHE IS I</p>
+        </div>
+
+        <div class="nav-right">
+            <a href="https://www.instagram.com/the_i_boutique/" target="_blank" class="icon-btn instagram-link" title="Instagram">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="https://facebook.com/share/17G39ohRza" target="_blank" class="icon-btn facebook-link" title="Facebook">
+                <i class="fa-brands fa-facebook-f"></i>
+            </a>
+            <a href="https://wa.me/962790359898" target="_blank" class="icon-btn whatsapp-link" title="WhatsApp">
+                <i class="fa-brands fa-whatsapp"></i>
+            </a>
+            <button class="icon-btn cart-btn" onclick="toggleCart()">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <span class="cart-count" id="cart-count">0</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-nav-overlay" id="mobile-overlay" onclick="toggleMobileMenu()"></div>
+    <div class="mobile-nav" id="mobile-nav">
+        <div class="mobile-nav-header">
+            <span class="brand-title">THE I BOUTIQUE</span>
+            <button class="close-btn" onclick="toggleMobileMenu()"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="mobile-categories" id="mobile-categories">
+            <!-- Categories rendered by JS -->
+        </div>
+    </div>
+
+    <!-- Hero Banner -->
+    <section class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <p class="sub-title" id="hero-sub">تشكيلة الأناقة التركية</p>
+            <h1 class="main-title" id="hero-title">Elegance Redefined</h1>
+            <a href="#products-section" class="btn-primary" id="hero-btn">تسوقي المجموعة الان</a>
+        </div>
+    </section>
+
+    <!-- Marquee Ticker Bar -->
+    <div class="marquee-bar">
+        <div class="marquee-track">
+            <span>✨ NEW COLLECTION 2026</span>
+            <span>•</span>
+            <span>TURKISH HIGH FASHION</span>
+            <span>•</span>
+            <span>CASH ON DELIVERY IN JORDAN</span>
+            <span>•</span>
+            <span>✨ NEW COLLECTION 2026</span>
+            <span>•</span>
+            <span>TURKISH HIGH FASHION</span>
+            <span>•</span>
+            <span>CASH ON DELIVERY IN JORDAN</span>
+        </div>
+    </div>
+
+    <!-- USP Features Bar -->
+    <section class="usp-section">
+        <div class="usp-container">
+            <div class="usp-item">
+                <i class="fa-solid fa-truck-fast"></i>
+                <div>
+                    <h4 id="usp-1-title">توصيل سريع</h4>
+                    <p id="usp-1-desc">لكافة المحافظات في الأردن</p>
+                </div>
+            </div>
+            <div class="usp-item">
+                <i class="fa-solid fa-hand-holding-dollar"></i>
+                <div>
+                    <h4 id="usp-2-title">الدفع عند الاستلام</h4>
+                    <p id="usp-2-desc">كاش بكل أمان وراحة</p>
+                </div>
+            </div>
+            <div class="usp-item">
+                <i class="fa-solid fa-gem"></i>
+                <div>
+                    <h4 id="usp-3-title">جودة تركية فاخرة</h4>
+                    <p id="usp-3-desc">تصاميم عصرية مختارة بعناية</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brand Story Section -->
+    <section class="brand-story">
+        <div class="story-content">
+            <h2 id="story-title">SHE IS I</h2>
+            <p id="story-text">حيث تلتقي الأناقة التركية بالذوق الراقي. نقدم لكِ أحدث صيحات الموضة النسائية لتكوني دائماً في قمة التألق والثقة.</p>
+        </div>
+    </section>
+
+    <!-- Featured Categories Lookbook Carousel Section -->
+    <section class="lookbook-section">
+        <div class="lookbook-header">
+            <h2 id="lookbook-title" class="lookbook-main-title">التشكيلة المميزة</h2>
+        </div>
+
+        <div class="lookbook-carousel-container" id="lookbook-carousel">
+            <div class="lookbook-card" onclick="selectCategory('suits')">
+                <img src="suit.jpg" alt="أطقم رسمية">
+                <div class="lookbook-overlay">
+                    <h3 id="lb-suits">أطقم رسمية</h3>
+                    <span id="lb-shop-1">اكتشفي التشكيلة</span>
+                </div>
+            </div>
+            <div class="lookbook-card" onclick="selectCategory('jackets')">
+                <img src="jacket.jpg" alt="جاكيتات">
+                <div class="lookbook-overlay">
+                    <h3 id="lb-jackets">جاكيتات</h3>
+                    <span id="lb-shop-2">اكتشفي التشكيلة</span>
+                </div>
+            </div>
+            <div class="lookbook-card" onclick="selectCategory('tricot')">
+                <img src="tricot.jpg" alt="تريكو">
+                <div class="lookbook-overlay">
+                    <h3 id="lb-tricot">تريكو</h3>
+                    <span id="lb-shop-3">اكتشفي التشكيلة</span>
+                </div>
+            </div>
+            <div class="lookbook-card" onclick="selectCategory('skirts')">
+                <img src="skirts.jpg" alt="تنانير">
+                <div class="lookbook-overlay">
+                    <h3 id="lb-skirts">تنانير</h3>
+                    <span id="lb-shop-4">اكتشفي التشكيلة</span>
+                </div>
+            </div>
+            <div class="lookbook-card" onclick="selectCategory('tops')">
+                <img src="tops.jpg" alt="توبات">
+                <div class="lookbook-overlay">
+                    <h3 id="lb-tops">توبات</h3>
+                    <span id="lb-shop-5">اكتشفي التشكيلة</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Products Container -->
+    <main class="container" id="products-section">
+        <!-- Categories Filter -->
+        <nav class="categories-bar" id="categories-bar">
+            <!-- Categories rendered by JS -->
+        </nav>
+
+        <!-- Product Grid -->
+        <div class="products-grid" id="products-grid">
+            <!-- Product Cards rendered by JS -->
+        </div>
+    </main>
+
+    <!-- Slide-out Cart Drawer -->
+    <div class="cart-overlay" id="cart-overlay" onclick="toggleCart()"></div>
+    <aside class="cart-drawer" id="cart-drawer">
+        <div class="cart-header">
+            <h3 id="cart-title">حقيبة التسوق</h3>
+            <button class="close-btn" onclick="toggleCart()"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        
+        <div class="cart-body" id="cart-body">
+            <!-- Cart Items rendered dynamically -->
+        </div>
+
+        <div class="cart-footer">
+            <div class="summary-row">
+                <span id="label-subtotal">المجموع الفرعي:</span>
+                <span class="price-val" id="cart-subtotal">0.00 JOD</span>
+            </div>
+            <div class="summary-row delivery-note">
+                <span id="label-delivery">التوصيل داخل الأردن:</span>
+                <span id="val-delivery">3.00 JOD (عند التأكيد)</span>
+            </div>
+            <button class="checkout-whatsapp-btn" onclick="checkoutWhatsApp()">
+                <i class="fa-brands fa-whatsapp"></i>
+                <span id="btn-checkout-label">إتمام الطلب عبر الواتساب</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- Quick View Modal -->
+    <div class="modal-overlay" id="quick-modal-overlay" onclick="closeQuickView()"></div>
+    <div class="quick-modal" id="quick-modal">
+        <button class="close-btn modal-close" onclick="closeQuickView()"><i class="fa-solid fa-xmark"></i></button>
+        <div class="modal-content" id="modal-content">
+            <!-- Dynamic Content -->
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <!-- Brand Info -->
+            <div class="footer-col brand-col">
+                <div class="footer-logo">THE I BOUTIQUE</div>
+                <p id="footer-desc" class="footer-desc">
+                    بوتيك ملابس نسائية تركية ذات جودة عالية. توصيل لجميع المحافظات في الأردن والدفع عند الاستلام.
+                </p>
+            </div>
+
+            <!-- Contact Links -->
+            <div class="footer-col contact-col">
+                <h4 id="footer-contact-title" class="footer-title">تواصل معنا</h4>
+                <div class="contact-links">
+                    <a href="tel:+962790359898" class="contact-item">
+                        <i class="fa-solid fa-phone"></i>
+                        <span dir="ltr">0790359898</span>
+                    </a>
+                    <a href="https://wa.me/962790359898" target="_blank" class="contact-item whatsapp-item">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        <span dir="ltr">+962 7 9035 9898</span>
+                    </a>
+                    <a href="https://www.instagram.com/the_i_boutique/" target="_blank" class="contact-item instagram-item">
+                        <i class="fa-brands fa-instagram"></i>
+                        <span id="footer-instagram-text">صفحتنا على إنستغرام</span>
+                    </a>
+                    <a href="https://facebook.com/share/17G39ohRza" target="_blank" class="contact-item facebook-item">
+                        <i class="fa-brands fa-facebook-f"></i>
+                        <span id="footer-facebook-text">صفحتنا على فيسبوك</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Policies -->
+            <div class="footer-col policies-col">
+                <h4 id="footer-policies-title" class="footer-title">سياسات المتجر</h4>
+                <ul class="policies-list">
+                    <li id="policy-1"><i class="fa-solid fa-check"></i> <span id="policy-1-text">الدفع كاش عند الاستلام</span></li>
+                    <li id="policy-2"><i class="fa-solid fa-xmark"></i> <span id="policy-2-text">نعتذر عن التبديل أو الترجيع</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 The I Boutique. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Script JS Link -->
+    <script src="script.js"></script>
+</body>
+</html>
