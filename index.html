@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The I Boutique | ذا آي بوتيك — أزياء نسائية تركية</title>
+
+    <!-- SEO / Social -->
+    <meta name="description" content="The I Boutique — بوتيك أزياء نسائية تركية فاخرة في الأردن. تشكيلة عصرية، توصيل لجميع المحافظات، والدفع عند الاستلام.">
+    <meta name="theme-color" content="#111111">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <!-- TODO: replace with your real domain + a full https:// image URL before publishing -->
+    <link rel="canonical" href="https://theiboutique.example/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="The I Boutique">
+    <meta property="og:title" content="The I Boutique | ذا آي بوتيك">
+    <meta property="og:description" content="أزياء نسائية تركية فاخرة. توصيل لجميع مناطق الأردن والدفع عند الاستلام.">
+    <meta property="og:image" content="suit.jpg">
+    <meta property="og:locale" content="ar_JO">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The I Boutique | ذا آي بوتيك">
+    <meta name="twitter:description" content="أزياء نسائية تركية فاخرة. توصيل لجميع مناطق الأردن والدفع عند الاستلام.">
+    <meta name="twitter:image" content="suit.jpg">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,700&family=Montserrat:wght@300;400;600&family=Noto+Kufi+Arabic:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons (JS/SVG — CSP-safe) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" defer></script>
+    <!-- Style CSS Link -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Structured data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ClothingStore",
+      "name": "The I Boutique",
+      "image": "suit.jpg",
+      "telephone": "+962790359898",
+      "priceRange": "$$",
+      "address": { "@type": "PostalAddress", "addressCountry": "JO" },
+      "sameAs": [
+        "https://www.instagram.com/the_i_boutique/",
+        "https://facebook.com/share/17G39ohRza"
+      ]
+    }
+    </script>
+</head>
+<body>
+
+    <!-- Top Announcement Bar -->
+    <div class="announcement-bar">
+        <span id="announcement-text" data-i18n="announcement">توصيل لجميع مناطق الأردن 📦 | الدفع عند الاستلام 🚚</span>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="header">
+        <div class="nav-left">
+            <button class="icon-btn mobile-menu-btn" onclick="toggleMobileMenu()" data-i18n-aria="ariaMenu" aria-label="القائمة" aria-controls="mobile-nav" aria-expanded="false"><i class="fa-solid fa-bars" aria-hidden="true"></i></button>
+            <button class="lang-switch-btn" onclick="toggleLanguage()" id="lang-btn" data-i18n="langBtn" data-i18n-aria="ariaLang" aria-label="تغيير اللغة">EN</button>
+            <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+                <input type="text" id="search-input" placeholder="بحث عن منتجات..." data-i18n-placeholder="searchPlaceholder" data-i18n-aria="ariaSearch" aria-label="بحث عن منتجات" onkeyup="filterProducts()">
+            </div>
+        </div>
+
+        <div class="brand-logo">
+            <a href="#">THE I BOUTIQUE</a>
+            <p>SHE IS I</p>
+        </div>
+
+        <div class="nav-right">
+            <a href="https://www.instagram.com/the_i_boutique/" target="_blank" rel="noopener" class="icon-btn instagram-link" title="Instagram" aria-label="Instagram">
+                <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+            </a>
+            <a href="https://facebook.com/share/17G39ohRza" target="_blank" rel="noopener" class="icon-btn facebook-link" title="Facebook" aria-label="Facebook">
+                <i class="fa-brands fa-facebook-f" aria-hidden="true"></i>
+            </a>
+            <a href="https://wa.me/962790359898" target="_blank" rel="noopener" class="icon-btn whatsapp-link" title="WhatsApp" aria-label="WhatsApp">
+                <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+            </a>
+            <button class="icon-btn mobile-search-toggle" onclick="toggleMobileSearch()" data-i18n-aria="ariaSearch" aria-label="بحث" aria-expanded="false">
+                <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+            </button>
+            <button class="icon-btn cart-btn" onclick="toggleCart()" data-i18n-aria="ariaCart" aria-label="حقيبة التسوق">
+                <i class="fa-solid fa-bag-shopping" aria-hidden="true"></i>
+                <span class="cart-count" id="cart-count">0</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-nav-overlay" id="mobile-overlay" onclick="closeMobileMenu()"></div>
+    <nav class="mobile-nav" id="mobile-nav" role="dialog" aria-modal="true" aria-label="القائمة">
+        <div class="mobile-nav-header">
+            <span class="brand-title">THE I BOUTIQUE</span>
+            <button class="close-btn" onclick="closeMobileMenu()" data-i18n-aria="ariaClose" aria-label="إغلاق"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+        </div>
+        <div class="mobile-categories" id="mobile-categories">
+            <!-- Categories rendered by JS -->
+        </div>
+    </nav>
+
+    <!-- Hero Banner -->
+    <section class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <p class="sub-title" id="hero-sub" data-i18n="heroSub">تشكيلة الأناقة التركية</p>
+            <h1 class="main-title" id="hero-title" data-i18n="heroTitle">أناقة بلا حدود</h1>
+            <a href="#products-section" class="btn-primary" id="hero-btn" data-i18n="heroBtn">تسوقي المجموعة الان</a>
+        </div>
+    </section>
+
+    <!-- Marquee Ticker Bar -->
+    <div class="marquee-bar">
+        <div class="marquee-track">
+            <div class="marquee-group">
+                <span>✨ NEW COLLECTION 2026</span><span>•</span><span>TURKISH HIGH FASHION</span><span>•</span><span>CASH ON DELIVERY IN JORDAN</span><span>•</span>
+                <span>✨ NEW COLLECTION 2026</span><span>•</span><span>TURKISH HIGH FASHION</span><span>•</span><span>CASH ON DELIVERY IN JORDAN</span><span>•</span>
+                <span>✨ NEW COLLECTION 2026</span><span>•</span><span>TURKISH HIGH FASHION</span><span>•</span><span>CASH ON DELIVERY IN JORDAN</span><span>•</span>
+            </div>
+            <div class="marquee-group" aria-hidden="true">
+                <span>✨ NEW COLLECTION 2026</span><span>•</span><span>TURKISH HIGH FASHION</span><span>•</span><span>CASH ON DELIVERY IN JORDAN</span><span>•</span>
+                <span>✨ NEW COLLECTION 2026</span><span>•</span><span>TURKISH HIGH FASHION</span><span>•</span><span>CASH ON DELIVERY IN JORDAN</span><span>•</span>
+                <span>✨ NEW COLLECTION 2026</span><span>•</span><span>TURKISH HIGH FASHION</span><span>•</span><span>CASH ON DELIVERY IN JORDAN</span><span>•</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- USP Features Bar -->
+    <section class="usp-section">
+        <div class="usp-container">
+            <div class="usp-item">
+                <i class="fa-solid fa-truck-fast" aria-hidden="true"></i>
+                <div>
+                    <h4 id="usp-1-title" data-i18n="usp1Title">توصيل سريع</h4>
+                    <p id="usp-1-desc" data-i18n="usp1Desc">لكافة المحافظات في الأردن</p>
+                </div>
+            </div>
+            <div class="usp-item">
+                <i class="fa-solid fa-hand-holding-dollar" aria-hidden="true"></i>
+                <div>
+                    <h4 id="usp-2-title" data-i18n="usp2Title">الدفع عند الاستلام</h4>
+                    <p id="usp-2-desc" data-i18n="usp2Desc">كاش بكل أمان وراحة</p>
+                </div>
+            </div>
+            <div class="usp-item">
+                <i class="fa-solid fa-gem" aria-hidden="true"></i>
+                <div>
+                    <h4 id="usp-3-title" data-i18n="usp3Title">جودة تركية فاخرة</h4>
+                    <p id="usp-3-desc" data-i18n="usp3Desc">تصاميم عصرية مختارة بعناية</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brand Story Section -->
+    <section class="brand-story">
+        <div class="story-content">
+            <h2 id="story-title">SHE IS I</h2>
+            <p id="story-text" data-i18n="storyText">حيث تلتقي الأناقة التركية بالذوق الراقي. نقدم لكِ أحدث صيحات الموضة النسائية لتكوني دائماً في قمة التألق والثقة.</p>
+        </div>
+    </section>
+
+    <!-- Featured Categories Lookbook Carousel Section -->
+    <section class="lookbook-section">
+        <div class="lookbook-header">
+            <h2 id="lookbook-title" class="lookbook-main-title" data-i18n="lookbookTitle">التشكيلة المميزة</h2>
+        </div>
+
+        <div class="lookbook-carousel-container" id="lookbook-carousel">
+            <div class="lookbook-card" role="button" tabindex="0" onclick="selectCategory('suits')">
+                <img src="suit.jpg" alt="أطقم رسمية" loading="lazy" decoding="async">
+                <div class="lookbook-overlay">
+                    <h3 data-i18n="lbSuits">أطقم رسمية</h3>
+                    <span data-i18n="lbShop">اكتشفي التشكيلة</span>
+                </div>
+            </div>
+            <div class="lookbook-card" role="button" tabindex="0" onclick="selectCategory('jackets')">
+                <img src="jacket.jpg" alt="جاكيتات" loading="lazy" decoding="async">
+                <div class="lookbook-overlay">
+                    <h3 data-i18n="lbJackets">جاكيتات</h3>
+                    <span data-i18n="lbShop">اكتشفي التشكيلة</span>
+                </div>
+            </div>
+            <div class="lookbook-card" role="button" tabindex="0" onclick="selectCategory('tricot')">
+                <img src="tricot.jpg" alt="تريكو" loading="lazy" decoding="async">
+                <div class="lookbook-overlay">
+                    <h3 data-i18n="lbTricot">تريكو</h3>
+                    <span data-i18n="lbShop">اكتشفي التشكيلة</span>
+                </div>
+            </div>
+            <div class="lookbook-card" role="button" tabindex="0" onclick="selectCategory('skirts')">
+                <img src="skirts.jpg" alt="تنانير" loading="lazy" decoding="async">
+                <div class="lookbook-overlay">
+                    <h3 data-i18n="lbSkirts">تنانير</h3>
+                    <span data-i18n="lbShop">اكتشفي التشكيلة</span>
+                </div>
+            </div>
+            <div class="lookbook-card" role="button" tabindex="0" onclick="selectCategory('tops')">
+                <img src="tops.jpg" alt="توبات" loading="lazy" decoding="async">
+                <div class="lookbook-overlay">
+                    <h3 data-i18n="lbTops">توبات</h3>
+                    <span data-i18n="lbShop">اكتشفي التشكيلة</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Products Container -->
+    <main class="container" id="products-section">
+        <!-- Categories Filter -->
+        <nav class="categories-bar" id="categories-bar" aria-label="التصنيفات">
+            <!-- Categories rendered by JS -->
+        </nav>
+
+        <!-- Product Grid -->
+        <div class="products-grid" id="products-grid">
+            <noscript><p class="noscript-msg">يرجى تفعيل الجافاسكربت لعرض المنتجات.</p></noscript>
+            <!-- Product Cards rendered by JS -->
+        </div>
+    </main>
+
+    <!-- Slide-out Cart Drawer -->
+    <div class="cart-overlay" id="cart-overlay" onclick="closeCart()"></div>
+    <aside class="cart-drawer" id="cart-drawer" role="dialog" aria-modal="true" data-i18n-aria="ariaCart" aria-label="حقيبة التسوق">
+        <div class="cart-header">
+            <h3 id="cart-title" data-i18n="cartTitle">حقيبة التسوق</h3>
+            <button class="close-btn" onclick="closeCart()" data-i18n-aria="ariaClose" aria-label="إغلاق"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+        </div>
+
+        <div class="cart-body">
+            <div id="cart-items">
+                <!-- Cart Items rendered dynamically -->
+            </div>
+
+            <!-- Delivery / order details (kept static so typing isn't lost on re-render) -->
+            <form class="checkout-form" id="checkout-form" hidden onsubmit="event.preventDefault(); checkoutWhatsApp();">
+                <h4 data-i18n="formTitle">تفاصيل التوصيل</h4>
+                <div class="form-row">
+                    <div class="form-field">
+                        <label for="cust-name" data-i18n="labelName">الاسم الكامل</label>
+                        <input id="cust-name" type="text" autocomplete="name" data-i18n-placeholder="phName" placeholder="مثال: سارة أحمد">
+                    </div>
+                    <div class="form-field">
+                        <label for="cust-phone" data-i18n="labelPhone">رقم الهاتف</label>
+                        <input id="cust-phone" type="tel" inputmode="tel" dir="ltr" autocomplete="tel" data-i18n-placeholder="phPhone" placeholder="0791234567">
+                    </div>
+                </div>
+                <div class="form-field">
+                    <label for="gov-select" data-i18n="labelGov">المحافظة</label>
+                    <select id="gov-select" onchange="renderTotals()"></select>
+                </div>
+                <div class="form-field">
+                    <label for="cust-address" data-i18n="labelAddress">العنوان التفصيلي</label>
+                    <input id="cust-address" type="text" autocomplete="street-address" data-i18n-placeholder="phAddress" placeholder="المنطقة، الشارع، رقم البناية">
+                </div>
+                <div class="form-field">
+                    <label for="cust-note" data-i18n="labelNote">ملاحظات (اختياري)</label>
+                    <input id="cust-note" type="text" data-i18n-placeholder="phNote" placeholder="أي تفاصيل إضافية">
+                </div>
+                <p class="form-msg" id="form-msg" role="alert"></p>
+            </form>
+        </div>
+
+        <div class="cart-footer">
+            <div class="summary-row">
+                <span data-i18n="labelSubtotal">المجموع الفرعي:</span>
+                <span class="price-val" id="cart-subtotal">0.00 JOD</span>
+            </div>
+            <div class="summary-row delivery-note">
+                <span data-i18n="labelDelivery">رسوم التوصيل:</span>
+                <span id="val-delivery"></span>
+            </div>
+            <div class="summary-row total-row">
+                <span data-i18n="labelTotal">المجموع الكلي:</span>
+                <span class="price-val" id="cart-total">0.00 JOD</span>
+            </div>
+            <button class="checkout-whatsapp-btn" onclick="checkoutWhatsApp()">
+                <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+                <span id="btn-checkout-label" data-i18n="btnCheckout">إتمام الطلب عبر الواتساب</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- Quick View Modal -->
+    <div class="modal-overlay" id="quick-modal-overlay" onclick="closeQuickView()"></div>
+    <div class="quick-modal" id="quick-modal" role="dialog" aria-modal="true" data-i18n-aria="ariaProduct" aria-label="تفاصيل المنتج">
+        <button class="close-btn modal-close" onclick="closeQuickView()" data-i18n-aria="ariaClose" aria-label="إغلاق"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+        <div class="modal-content" id="modal-content">
+            <!-- Dynamic Content -->
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <!-- Brand Info -->
+            <div class="footer-col brand-col">
+                <div class="footer-logo">THE I BOUTIQUE</div>
+                <p id="footer-desc" class="footer-desc" data-i18n="footerDesc">
+                    بوتيك ملابس نسائية تركية ذات جودة عالية. توصيل لجميع المحافظات في الأردن والدفع عند الاستلام.
+                </p>
+            </div>
+
+            <!-- Contact Links -->
+            <div class="footer-col contact-col">
+                <h4 id="footer-contact-title" class="footer-title" data-i18n="footerContactTitle">تواصل معنا</h4>
+                <div class="contact-links">
+                    <a href="tel:+962790359898" class="contact-item">
+                        <i class="fa-solid fa-phone" aria-hidden="true"></i>
+                        <span dir="ltr">0790359898</span>
+                    </a>
+                    <a href="https://wa.me/962790359898" target="_blank" rel="noopener" class="contact-item whatsapp-item">
+                        <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+                        <span dir="ltr">+962 7 9035 9898</span>
+                    </a>
+                    <a href="https://www.instagram.com/the_i_boutique/" target="_blank" rel="noopener" class="contact-item instagram-item">
+                        <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+                        <span id="footer-instagram-text" data-i18n="footerInstagram">صفحتنا على إنستغرام</span>
+                    </a>
+                    <a href="https://facebook.com/share/17G39ohRza" target="_blank" rel="noopener" class="contact-item facebook-item">
+                        <i class="fa-brands fa-facebook-f" aria-hidden="true"></i>
+                        <span id="footer-facebook-text" data-i18n="footerFacebook">صفحتنا على فيسبوك</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Policies -->
+            <div class="footer-col policies-col">
+                <h4 id="footer-policies-title" class="footer-title" data-i18n="footerPoliciesTitle">سياسات المتجر</h4>
+                <ul class="policies-list">
+                    <li><i class="fa-solid fa-check" aria-hidden="true"></i> <span id="policy-1-text" data-i18n="policy1">الدفع كاش عند الاستلام</span></li>
+                    <li><i class="fa-solid fa-xmark" aria-hidden="true"></i> <span id="policy-2-text" data-i18n="policy2">نعتذر عن التبديل أو الترجيع</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 The I Boutique. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp -->
+    <a href="https://wa.me/962790359898" target="_blank" rel="noopener" class="fab-whatsapp" data-i18n-aria="ariaWhatsapp" aria-label="تواصل عبر واتساب">
+        <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+    </a>
+
+    <!-- Back to top -->
+    <button class="back-to-top" id="back-to-top" data-i18n-aria="ariaBackToTop" aria-label="العودة للأعلى">
+        <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
+    </button>
+
+    <!-- Script JS Link -->
+    <script src="script.js"></script>
+</body>
+</html>
