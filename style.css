@@ -1,3 +1,8 @@
+/* ============================================================
+   The I Boutique — Stylesheet
+   Design: clean luxury boutique — white / black / gold
+   ============================================================ */
+
 :root {
     --bg-main: #ffffff;
     --text-primary: #111111;
@@ -25,7 +30,32 @@ html, body {
     line-height: 1.6;
 }
 
-/* Announcement Bar */
+html.no-scroll, body.no-scroll {
+    overflow: hidden !important;
+}
+
+/* ============ Buttons ============ */
+
+.btn-primary {
+    display: inline-block;
+    padding: 12px 32px;
+    background-color: #ffffff;
+    color: var(--text-primary);
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.btn-primary:hover {
+    background-color: var(--text-primary);
+    color: #ffffff;
+}
+
+/* ============ Announcement Bar ============ */
+
 .announcement-bar {
     background-color: var(--text-primary);
     color: #ffffff;
@@ -36,7 +66,8 @@ html, body {
     font-weight: 300;
 }
 
-/* Header */
+/* ============ Header ============ */
+
 .header {
     display: flex;
     justify-content: space-between;
@@ -47,6 +78,11 @@ html, body {
     top: 0;
     background: #ffffff;
     z-index: 100;
+    transition: var(--transition);
+}
+
+.header.scrolled {
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
 }
 
 .nav-left, .nav-right {
@@ -63,6 +99,9 @@ html, body {
     color: var(--text-primary);
     transition: var(--transition);
     position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .icon-btn:hover {
@@ -77,6 +116,7 @@ html, body {
     font-weight: 600;
     cursor: pointer;
     transition: var(--transition);
+    font-family: var(--font-body);
 }
 
 .lang-switch-btn:hover {
@@ -94,9 +134,12 @@ html, body {
 .search-box input {
     border: none;
     outline: none;
+    background: transparent;
     padding: 4px 8px;
     font-size: 0.85rem;
     font-family: var(--font-body);
+    width: 140px;
+    color: var(--text-primary);
 }
 
 .brand-logo {
@@ -124,7 +167,7 @@ html, body {
     top: -8px;
     right: -10px;
     background-color: var(--accent-gold);
-    color: white;
+    color: #ffffff;
     font-size: 0.65rem;
     width: 18px;
     height: 18px;
@@ -135,7 +178,91 @@ html, body {
     font-weight: bold;
 }
 
-/* Hero Section */
+/* Mobile navigation drawer */
+
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.15rem;
+    cursor: pointer;
+    color: var(--text-primary);
+}
+
+.mobile-search-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+    color: var(--text-primary);
+}
+
+.mobile-nav {
+    position: fixed;
+    top: 0;
+    left: -300px;
+    width: 280px;
+    height: 100%;
+    background: #ffffff;
+    z-index: 1000;
+    transition: var(--transition);
+    padding: 20px;
+}
+
+.mobile-nav.open {
+    left: 0;
+}
+
+.mobile-nav-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    display: none;
+}
+
+.mobile-nav-overlay.open {
+    display: block;
+}
+
+.mobile-nav-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.mobile-nav-header .brand-title {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+}
+
+.mobile-categories button {
+    display: block;
+    width: 100%;
+    text-align: inherit;
+    padding: 12px 0;
+    border: none;
+    border-bottom: 1px solid var(--border-color);
+    background: none;
+    font-size: 0.95rem;
+    cursor: pointer;
+    color: var(--text-primary);
+    font-family: var(--font-body);
+}
+
+.mobile-categories button.active {
+    color: var(--accent-gold);
+    font-weight: 600;
+}
+
+/* ============ Hero ============ */
+
 .hero-section {
     height: 70vh;
     background: url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;
@@ -149,8 +276,11 @@ html, body {
 
 .hero-overlay {
     position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.30) 0%, rgba(0,0,0,0.40) 55%, rgba(0,0,0,0.55) 100%);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.30) 0%, rgba(0, 0, 0, 0.40) 55%, rgba(0, 0, 0, 0.55) 100%);
 }
 
 .hero-content {
@@ -175,25 +305,8 @@ html, body {
     letter-spacing: 2px;
 }
 
-.btn-primary {
-    display: inline-block;
-    padding: 12px 32px;
-    background-color: #ffffff;
-    color: var(--text-primary);
-    text-decoration: none;
-    font-size: 0.85rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    font-weight: 600;
-    transition: var(--transition);
-}
+/* ============ Marquee Ticker ============ */
 
-.btn-primary:hover {
-    background-color: var(--text-primary);
-    color: #ffffff;
-}
-
-/* Marquee Ticker Bar */
 .marquee-bar {
     background-color: var(--bg-light);
     border-bottom: 1px solid var(--border-color);
@@ -228,10 +341,11 @@ html, body {
     100% { transform: translateX(-50%); }
 }
 
-/* USP Features Bar */
+/* ============ USP Features ============ */
+
 .usp-section {
     padding: 35px 20px;
-    background-color: #fff;
+    background-color: #ffffff;
     border-bottom: 1px solid var(--border-color);
 }
 
@@ -260,12 +374,25 @@ html[dir="ltr"] .usp-item {
     color: var(--accent-gold);
 }
 
-/* USP icons — kept monochrome gold to match the boutique palette */
-.usp-item i,
-.usp-item svg,
-.usp-item svg path {
-    color: var(--accent-gold);
-    fill: var(--accent-gold);
+.usp-item:nth-child(1) i,
+.usp-item:nth-child(1) svg,
+.usp-item:nth-child(1) svg path {
+    color: #3d84c6;
+    fill: #3d84c6;
+}
+
+.usp-item:nth-child(2) i,
+.usp-item:nth-child(2) svg,
+.usp-item:nth-child(2) svg path {
+    color: #2e9e5b;
+    fill: #2e9e5b;
+}
+
+.usp-item:nth-child(3) i,
+.usp-item:nth-child(3) svg,
+.usp-item:nth-child(3) svg path {
+    color: #b06ab3;
+    fill: #b06ab3;
 }
 
 .usp-item h4 {
@@ -279,7 +406,8 @@ html[dir="ltr"] .usp-item {
     color: var(--text-muted);
 }
 
-/* Brand Story Section */
+/* ============ Brand Story ============ */
+
 .brand-story {
     padding: 60px 20px;
     text-align: center;
@@ -305,7 +433,8 @@ html[dir="ltr"] .usp-item {
     line-height: 1.8;
 }
 
-/* Lookbook Carousel Section */
+/* ============ Lookbook Carousel ============ */
+
 .lookbook-section {
     max-width: 1400px;
     margin: 50px auto 20px;
@@ -367,13 +496,16 @@ html[dir="ltr"] .lookbook-header {
 
 .lookbook-overlay {
     position: absolute;
-    bottom: 0; left: 0; width: 100%; height: 100%;
-    background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0) 60%);
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0) 60%);
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     padding: 30px;
-    color: #fff;
+    color: #ffffff;
     text-align: right;
 }
 
@@ -394,12 +526,13 @@ html[dir="ltr"] .lookbook-overlay {
     letter-spacing: 2px;
     text-transform: uppercase;
     font-weight: 600;
-    border-bottom: 1px solid #fff;
+    border-bottom: 1px solid #ffffff;
     width: fit-content;
     padding-bottom: 2px;
 }
 
-/* Categories Bar */
+/* ============ Layout: container & categories ============ */
+
 .container {
     max-width: 1400px;
     margin: 40px auto;
@@ -444,7 +577,8 @@ html[dir="ltr"] .lookbook-overlay {
     background-color: var(--text-primary);
 }
 
-/* Products Grid */
+/* ============ Products Grid & Product Card ============ */
+
 .products-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -453,23 +587,26 @@ html[dir="ltr"] .lookbook-overlay {
 
 .product-card {
     position: relative;
+    background: var(--bg-main);
+    border-radius: 10px;
+    overflow: hidden;
     transition: var(--transition);
 }
 
 .product-img-box {
     position: relative;
     width: 100%;
-    padding-top: 133%;
+    height: 300px;
     overflow: hidden;
     background-color: var(--bg-light);
+    cursor: pointer;
 }
 
 .product-img-box img {
-    position: absolute;
-    top: 0; left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
+    display: block;
     transition: transform 0.6s ease;
 }
 
@@ -482,7 +619,7 @@ html[dir="ltr"] .lookbook-overlay {
     top: 10px;
     left: 10px;
     background-color: #d9534f;
-    color: #fff;
+    color: #ffffff;
     font-size: 0.7rem;
     padding: 3px 8px;
     font-weight: 600;
@@ -494,11 +631,24 @@ html[dir="rtl"] .badge-sale {
     right: 10px;
 }
 
+.badge-soldout {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: rgba(17, 17, 17, 0.85);
+    color: #ffffff;
+    font-size: 0.7rem;
+    padding: 3px 8px;
+    font-weight: 600;
+    z-index: 2;
+}
+
 .quick-add-btn {
     position: absolute;
     bottom: -50px;
-    left: 0; width: 100%;
-    background: rgba(255,255,255,0.95);
+    left: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
     color: var(--text-primary);
     border: none;
     padding: 12px;
@@ -536,14 +686,228 @@ html[dir="rtl"] .badge-sale {
     font-size: 0.8rem;
 }
 
-/* Cart Drawer */
+/* ============ Product Thumbnails ============ */
+
+.product-thumbs {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.product-thumbs img {
+    width: 56px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 6px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    background: var(--bg-light);
+    transition: border-color 0.2s;
+    flex-shrink: 0;
+}
+
+.product-thumbs img:hover,
+.product-thumbs img.active {
+    border-color: var(--accent-gold);
+}
+
+/* ============ Quick View Modal ============ */
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1001;
+    display: none;
+}
+
+.modal-overlay.open {
+    display: block;
+}
+
+.modal-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #ffffff;
+    width: 90%;
+    max-width: 800px;
+    max-height: calc(100vh - 40px);
+    overflow-y: auto;
+    z-index: 1002;
+    display: none;
+    padding: 30px;
+}
+
+.modal-container.open {
+    display: block;
+}
+
+.modal-container .close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 10;
+}
+
+html[dir="rtl"] .modal-container .close-btn {
+    right: auto;
+    left: 15px;
+}
+
+#modal-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.modal-img-box {
+    position: relative;
+}
+
+.modal-img-box img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    display: block;
+    border-radius: 10px;
+}
+
+.modal-thumbs {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+    overflow-x: auto;
+}
+
+.modal-thumbs img {
+    width: 60px;
+    height: 75px;
+    object-fit: cover;
+    border-radius: 6px;
+    cursor: pointer;
+    border: 2px solid #e0e0e0;
+    background: #f8f9fa;
+    transition: border-color 0.2s;
+    flex-shrink: 0;
+}
+
+.modal-thumbs img.active {
+    border-color: var(--accent-gold);
+}
+
+.modal-details .modal-title {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+
+.modal-details .modal-price {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.modal-details .modal-promo {
+    background: var(--bg-light);
+    border: 1px dashed var(--accent-gold);
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    margin-bottom: 10px;
+}
+
+.modal-details .modal-desc {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 15px;
+}
+
+.size-block {
+    margin-bottom: 15px;
+}
+
+.size-label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.size-options {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.size-pill {
+    border: 1px solid var(--border-color);
+    background: none;
+    padding: 8px 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    transition: var(--transition);
+}
+
+.size-pill.active {
+    background: var(--text-primary);
+    color: #ffffff;
+    border-color: var(--text-primary);
+}
+
+.qty-block {
+    margin-bottom: 15px;
+}
+
+.qty-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+.qty-btn {
+    border: 1px solid var(--border-color);
+    background: none;
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    line-height: 1;
+}
+
+.btn-primary.modal-add-btn {
+    width: 100%;
+    margin-top: 15px;
+    text-align: center;
+}
+
+.modal-warning {
+    color: #d9534f;
+    font-size: 0.85rem;
+    margin-top: 10px;
+}
+
+/* ============ Cart Drawer ============ */
+
 .cart-drawer {
     position: fixed;
-    top: 0; right: -420px;
+    top: 0;
+    right: -420px;
     width: 400px;
     height: 100%;
-    background: #fff;
-    box-shadow: -5px 0 25px rgba(0,0,0,0.1);
+    background: #ffffff;
+    box-shadow: -5px 0 25px rgba(0, 0, 0, 0.1);
     z-index: 1000;
     transition: var(--transition);
     display: flex;
@@ -565,8 +929,11 @@ html[dir="rtl"] .cart-drawer.open {
 
 .cart-overlay {
     position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.5);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
     z-index: 999;
     display: none;
 }
@@ -589,6 +956,12 @@ html[dir="rtl"] .cart-drawer.open {
     padding: 20px;
 }
 
+.cart-empty {
+    text-align: center;
+    color: var(--text-muted);
+    padding: 40px 0;
+}
+
 .cart-item {
     display: flex;
     gap: 15px;
@@ -601,6 +974,7 @@ html[dir="rtl"] .cart-drawer.open {
     width: 70px;
     height: 90px;
     object-fit: cover;
+    border-radius: 6px;
 }
 
 .cart-item-details {
@@ -612,25 +986,24 @@ html[dir="rtl"] .cart-drawer.open {
     font-weight: 600;
 }
 
+.cart-item-size {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
 .cart-item-price {
     font-size: 0.85rem;
     color: var(--text-muted);
     margin: 5px 0;
 }
 
-.qty-controls {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-top: 5px;
-}
-
-.qty-btn {
-    border: 1px solid var(--border-color);
+.cart-remove {
     background: none;
-    width: 24px;
-    height: 24px;
+    border: none;
+    color: var(--text-muted);
     cursor: pointer;
+    font-size: 1rem;
+    align-self: flex-start;
 }
 
 .cart-footer {
@@ -649,7 +1022,7 @@ html[dir="rtl"] .cart-drawer.open {
 .checkout-whatsapp-btn {
     width: 100%;
     background-color: #25D366;
-    color: white;
+    color: #ffffff;
     border: none;
     padding: 14px;
     font-size: 0.9rem;
@@ -667,115 +1040,74 @@ html[dir="rtl"] .cart-drawer.open {
     background-color: #1eb857;
 }
 
-/* Quick View Modal */
-.modal-overlay {
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.6);
-    z-index: 1001;
-    display: none;
+.price-val {
+    font-weight: 600;
 }
 
-.quick-modal {
-    position: fixed;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    background: #fff;
-    width: 90%;
-    max-width: 800px;
-    z-index: 1002;
-    display: none;
-    padding: 30px;
+.price-val.discount-val {
+    color: #d9534f;
 }
 
-.quick-modal.open, .modal-overlay.open {
-    display: block;
+/* Checkout / delivery form */
+
+.checkout-form {
+    margin-top: 10px;
 }
 
-.modal-close {
-    position: absolute;
-    top: 15px; right: 15px;
-}
-
-html[dir="rtl"] .modal-close {
-    right: auto; left: 15px;
-}
-
-.modal-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-}
-
-.modal-img-box img {
-    width: 100%;
-    height: 400px;
-    object-fit: cover;
-}
-
-/* Mobile Nav Drawer */
-.mobile-menu-btn {
-    display: none;
-}
-
-.mobile-search-toggle {
-    display: none;
-}
-
-.mobile-nav {
-    position: fixed;
-    top: 0; left: -300px;
-    width: 280px; height: 100%;
-    background: #fff;
-    z-index: 1000;
-    transition: var(--transition);
-    padding: 20px;
-}
-
-html[dir="rtl"] .mobile-nav {
-    left: auto; right: -300px;
-}
-
-.mobile-nav.open {
-    left: 0;
-}
-
-html[dir="rtl"] .mobile-nav.open {
-    right: 0;
-}
-
-.mobile-nav-overlay {
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.5);
-    z-index: 999;
-    display: none;
-}
-
-.mobile-nav-overlay.open {
-    display: block;
-}
-
-.mobile-nav-header {
+.form-row {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 30px;
+    gap: 10px;
 }
 
-.mobile-categories button {
+.form-field {
+    flex: 1;
+    margin-bottom: 10px;
+}
+
+.checkout-form label {
     display: block;
-    width: 100%;
-    text-align: inherit;
-    padding: 12px 0;
-    border: none;
-    border-bottom: 1px solid var(--border-color);
-    background: none;
-    font-size: 0.95rem;
-    cursor: pointer;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    margin-bottom: 4px;
 }
 
-/* Footer Styles */
+.checkout-form input,
+.checkout-form select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    color: var(--text-primary);
+    background: #ffffff;
+}
+
+.form-msg {
+    color: #d9534f;
+    font-size: 0.8rem;
+    margin-top: 8px;
+}
+
+.cart-promo-note {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin: 8px 0;
+}
+
+.cart-promo-note.hint {
+    color: #b06ab3;
+}
+
+.cart-suit-note {
+    font-size: 0.8rem;
+    color: #2e9e5b;
+    margin: 8px 0;
+}
+
+/* ============ Footer ============ */
+
 .footer {
     background-color: #fcfcfc;
     border-top: 1px solid var(--border-color);
@@ -838,7 +1170,6 @@ html[dir="ltr"] .footer-title::after {
     left: 0;
 }
 
-/* Contact Items */
 .contact-links {
     display: flex;
     flex-direction: column;
@@ -873,62 +1204,6 @@ html[dir="ltr"] .contact-item:hover {
     transform: translateX(3px);
 }
 
-/* ==========================================
-   Social icon brand colors
-   NOTE: Font Awesome's JS kit replaces <i> with <svg>, so we color the
-   link itself + the injected <svg>/<path>. FA fills with currentColor.
-   ========================================== */
-
-/* WhatsApp — brand green (header + footer) */
-.whatsapp-link,
-.whatsapp-link i,
-.whatsapp-link svg,
-.whatsapp-link svg path,
-.contact-item.whatsapp-item i,
-.contact-item.whatsapp-item svg,
-.contact-item.whatsapp-item svg path {
-    color: #25D366;
-    fill: #25D366;
-}
-
-/* Facebook — brand blue */
-.facebook-link,
-.facebook-link i,
-.facebook-link svg,
-.facebook-link svg path,
-.contact-item.facebook-item i,
-.contact-item.facebook-item svg,
-.contact-item.facebook-item svg path {
-    color: #1877F2;
-    fill: #1877F2;
-}
-
-/* Instagram — brand magenta/pink */
-.instagram-link,
-.instagram-link i,
-.instagram-link svg,
-.instagram-link svg path,
-.contact-item.instagram-item i,
-.contact-item.instagram-item svg,
-.contact-item.instagram-item svg path {
-    color: #E4405F;
-    fill: #E4405F;
-}
-
-/* Keep social brand colors on hover instead of turning gold */
-.instagram-link:hover,
-.facebook-link:hover,
-.whatsapp-link:hover {
-    opacity: 0.75;
-}
-
-.instagram-link:hover,
-.facebook-link:hover,
-.whatsapp-link:hover {
-    color: inherit;
-}
-
-/* Policies List */
 .policies-list {
     list-style: none;
     padding: 0;
@@ -951,7 +1226,6 @@ html[dir="ltr"] .contact-item:hover {
     color: var(--text-primary);
 }
 
-/* Footer Bottom */
 .footer-bottom {
     max-width: 1200px;
     margin: 40px auto 0;
@@ -963,12 +1237,131 @@ html[dir="ltr"] .contact-item:hover {
     letter-spacing: 0.5px;
 }
 
-/* ==========================================
-   MOBILE — full responsive overhaul
-   ========================================== */
-@media (max-width: 768px) {
+/* ============ Social brand colors ============ */
 
-    /* Header */
+.whatsapp-link,
+.whatsapp-link i,
+.whatsapp-link svg,
+.whatsapp-link svg path,
+.contact-item.whatsapp-item i,
+.contact-item.whatsapp-item svg,
+.contact-item.whatsapp-item svg path {
+    color: #25D366;
+    fill: #25D366;
+}
+
+.facebook-link,
+.facebook-link i,
+.facebook-link svg,
+.facebook-link svg path,
+.contact-item.facebook-item i,
+.contact-item.facebook-item svg,
+.contact-item.facebook-item svg path {
+    color: #1877F2;
+    fill: #1877F2;
+}
+
+.instagram-link,
+.instagram-link i,
+.instagram-link svg,
+.instagram-link svg path,
+.contact-item.instagram-item i,
+.contact-item.instagram-item svg,
+.contact-item.instagram-item svg path {
+    color: #E4405F;
+    fill: #E4405F;
+}
+
+/* ============ Floating WhatsApp + Back to top ============ */
+
+.fab-whatsapp {
+    position: fixed;
+    bottom: 25px;
+    left: 25px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #25D366;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    z-index: 900;
+    box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+    transition: var(--transition);
+}
+
+.fab-whatsapp:hover {
+    background: #1eb857;
+    transform: scale(1.05);
+}
+
+.back-to-top {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: var(--text-primary);
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    z-index: 900;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: var(--transition);
+}
+
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* ============ Close buttons ============ */
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 1.4rem;
+    cursor: pointer;
+    color: var(--text-primary);
+    line-height: 1;
+}
+
+/* ============ Utilities ============ */
+
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--text-muted);
+}
+
+.empty-state i {
+    font-size: 2.5rem;
+    color: var(--border-color);
+    margin-bottom: 15px;
+}
+
+.noscript-msg {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--text-muted);
+}
+
+/* ============
+   Responsive — mobile first tweaks for small screens
+   (main rules above are written for desktop)
+   ============ */
+
+@media (max-width: 768px) {
     .header {
         padding: 14px 16px;
         position: sticky;
@@ -1000,7 +1393,6 @@ html[dir="ltr"] .contact-item:hover {
         gap: 12px;
     }
 
-    /* Hero */
     .hero-section {
         height: 60vh;
     }
@@ -1022,12 +1414,10 @@ html[dir="ltr"] .contact-item:hover {
         letter-spacing: 1.5px;
     }
 
-    /* Marquee */
     .marquee-track {
         font-size: 0.7rem;
     }
 
-    /* USP */
     .usp-section {
         padding: 25px 16px;
     }
@@ -1054,12 +1444,10 @@ html[dir="ltr"] .contact-item:hover {
         min-width: 30px;
     }
 
-    /* Brand story */
     .brand-story {
         padding: 40px 20px;
     }
 
-    /* Lookbook */
     .lookbook-section {
         margin: 30px auto 10px;
         padding: 0 16px;
@@ -1088,12 +1476,12 @@ html[dir="ltr"] .contact-item:hover {
         max-width: 62vw !important;
         height: 340px !important;
         border-radius: 14px !important;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
     }
 
     .lookbook-overlay {
         padding: 18px !important;
-        background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0) 55%) !important;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0) 55%) !important;
     }
 
     .lookbook-overlay h3 {
@@ -1106,7 +1494,6 @@ html[dir="ltr"] .contact-item:hover {
         letter-spacing: 1.5px;
     }
 
-    /* Categories bar */
     .container {
         padding: 0 14px;
         margin: 28px auto;
@@ -1142,7 +1529,7 @@ html[dir="ltr"] .contact-item:hover {
 
     .cat-item.active {
         background: var(--text-primary);
-        color: #fff;
+        color: #ffffff;
         font-weight: 500;
     }
 
@@ -1150,7 +1537,6 @@ html[dir="ltr"] .contact-item:hover {
         display: none;
     }
 
-    /* Products grid */
     .products-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 14px;
@@ -1164,7 +1550,15 @@ html[dir="ltr"] .contact-item:hover {
         font-size: 0.82rem;
     }
 
-    /* Cart drawer */
+    .product-img-box {
+        height: 240px;
+    }
+
+    .product-thumbs img {
+        width: 48px;
+        height: 60px;
+    }
+
     .cart-drawer {
         width: 100%;
         right: -100%;
@@ -1184,14 +1578,13 @@ html[dir="ltr"] .contact-item:hover {
         right: auto;
     }
 
-    /* Quick modal */
-    .quick-modal {
+    .modal-container {
         width: 95%;
         padding: 20px;
         top: 50%;
     }
 
-    .modal-content {
+    #modal-content {
         grid-template-columns: 1fr;
         gap: 16px;
     }
@@ -1200,7 +1593,6 @@ html[dir="ltr"] .contact-item:hover {
         height: 260px;
     }
 
-    /* Footer */
     .footer {
         padding: 40px 20px 20px;
         margin-top: 50px;
@@ -1231,18 +1623,15 @@ html[dir="ltr"] .contact-item:hover {
         max-width: 100%;
     }
 }
-/* ==========================================
-   Lookbook — clean, no hacks
-   ========================================== */
 
-/* Mobile nav menu btn */
+/* Mobile nav + mobile search reveal */
+
 @media (max-width: 768px) {
     .mobile-menu-btn {
         display: flex !important;
     }
 }
 
-/* Mobile search reveal */
 .mobile-search-toggle {
     display: none;
 }
@@ -1251,362 +1640,25 @@ html[dir="ltr"] .contact-item:hover {
     .mobile-search-toggle {
         display: flex;
     }
+
     .search-box {
         display: none;
         position: absolute;
         top: 100%;
         left: 0;
         right: 0;
-        background: #fff;
+        background: #ffffff;
         border-bottom: 1px solid var(--border-color);
         padding: 12px 20px;
         z-index: 200;
     }
+
     .search-box.mobile-open {
         display: flex;
     }
+
     .search-box input {
         width: 100%;
         font-size: 0.95rem;
     }
-}
-
-/* ==========================================
-   v2 — polish, accessibility & checkout
-   Appended on purpose: the mobile rules above are untouched.
-   ========================================== */
-
-/* --- Arabic typography: never letter-space cursive Arabic --- */
-html[lang="ar"] .announcement-bar,
-html[lang="ar"] .hero-content .sub-title,
-html[lang="ar"] .hero-content .main-title,
-html[lang="ar"] .lookbook-main-title,
-html[lang="ar"] .lookbook-overlay h3,
-html[lang="ar"] .lookbook-overlay span,
-html[lang="ar"] .cat-item,
-html[lang="ar"] .btn-primary,
-html[lang="ar"] .footer-title,
-html[lang="ar"] .footer-desc,
-html[lang="ar"] .size-label,
-html[lang="ar"] .form-field label {
-    letter-spacing: 0;
-}
-
-/* --- Header shadow once the page is scrolled --- */
-.header.scrolled {
-    box-shadow: 0 6px 22px rgba(0, 0, 0, 0.06);
-}
-
-/* --- Keep the scroll target clear of the sticky header --- */
-#products-section {
-    scroll-margin-top: 90px;
-}
-
-/* --- Radius consistency --- */
-.product-img-box { border-radius: 10px; }
-.modal-img-box img { border-radius: 10px; }
-.cart-item img { border-radius: 6px; }
-.checkout-whatsapp-btn { border-radius: 6px; }
-.qty-btn { border-radius: 6px; }
-.lang-switch-btn { border-radius: 4px; }
-
-/* --- Old price spacing works in both directions --- */
-.old-price {
-    margin-left: 0;
-    margin-inline-start: 8px;
-}
-
-/* --- Focus visibility (keyboard users) --- */
-a:focus-visible,
-button:focus-visible,
-input:focus-visible,
-select:focus-visible,
-textarea:focus-visible,
-[tabindex]:focus-visible {
-    outline: 2px solid var(--accent-gold);
-    outline-offset: 2px;
-}
-
-/* --- Scroll lock while a drawer / modal is open --- */
-html.no-scroll,
-body.no-scroll {
-    overflow: hidden !important;
-}
-
-/* --- Empty / noscript states --- */
-.empty-state {
-    grid-column: 1 / -1;
-    text-align: center;
-    padding: 60px 20px;
-    color: var(--text-muted);
-}
-.empty-state i {
-    font-size: 2.5rem;
-    display: block;
-    margin-bottom: 15px;
-    opacity: 0.5;
-}
-.empty-state p {
-    font-size: 1.1rem;
-    font-weight: 500;
-}
-.noscript-msg {
-    grid-column: 1 / -1;
-    text-align: center;
-    color: var(--text-muted);
-}
-
-/* --- Product card: sold out --- */
-.badge-soldout {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    background-color: rgba(17, 17, 17, 0.85);
-    color: #fff;
-    font-size: 0.7rem;
-    padding: 3px 8px;
-    font-weight: 600;
-    z-index: 2;
-}
-html[dir="rtl"] .badge-soldout { left: auto; right: 10px; }
-
-/* --- Cart items: size tag, remove button, empty state --- */
-.cart-empty {
-    text-align: center;
-    color: var(--text-muted);
-    margin-top: 50px;
-}
-.cart-item {
-    position: relative;
-    align-items: flex-start;
-}
-.cart-item-size {
-    display: inline-block;
-    font-size: 0.7rem;
-    color: var(--text-muted);
-    border: 1px solid var(--border-color);
-    border-radius: 4px;
-    padding: 1px 6px;
-    margin-bottom: 4px;
-}
-.cart-remove {
-    background: none;
-    border: none;
-    color: var(--text-muted);
-    cursor: pointer;
-    font-size: 0.85rem;
-    padding: 4px;
-    transition: var(--transition);
-}
-.cart-remove:hover { color: #d9534f; }
-
-/* --- Cart totals --- */
-.summary-row.total-row {
-    font-weight: 700;
-    font-size: 1rem;
-    color: var(--text-primary);
-    border-top: 1px solid var(--border-color);
-    padding-top: 10px;
-    margin-top: 12px;
-}
-
-/* --- Checkout form --- */
-.checkout-form {
-    margin-top: 24px;
-    padding-top: 20px;
-    border-top: 1px solid var(--border-color);
-}
-.checkout-form h4 {
-    font-size: 0.95rem;
-    font-weight: 600;
-    margin-bottom: 14px;
-}
-.form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-}
-.form-field { margin-bottom: 12px; }
-.form-field label {
-    display: block;
-    font-size: 0.78rem;
-    color: var(--text-muted);
-    margin-bottom: 5px;
-}
-.form-field input,
-.form-field select {
-    width: 100%;
-    padding: 10px 12px;
-    border: 1px solid var(--border-color);
-    border-radius: 6px;
-    background: #fff;
-    color: var(--text-primary);
-    font-family: var(--font-body);
-    font-size: 0.85rem;
-    transition: var(--transition);
-}
-.form-field input:focus,
-.form-field select:focus {
-    border-color: var(--text-primary);
-    outline: none;
-}
-.form-msg {
-    font-size: 0.78rem;
-    color: #d9534f;
-    margin-top: 4px;
-    min-height: 1em;
-}
-
-/* --- Quick view modal detail panel --- */
-.modal-details {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-.modal-title {
-    font-family: var(--font-heading);
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-}
-html[lang="ar"] .modal-title {
-    font-family: var(--font-body);
-}
-.modal-price {
-    font-size: 1.15rem;
-    font-weight: 700;
-    color: var(--accent-gold);
-    margin-bottom: 12px;
-}
-.modal-desc {
-    color: var(--text-muted);
-    font-size: 0.88rem;
-    line-height: 1.7;
-    margin-bottom: 20px;
-}
-.size-block, .qty-block { margin-bottom: 16px; }
-.size-label {
-    display: block;
-    font-size: 0.78rem;
-    color: var(--text-muted);
-    margin-bottom: 8px;
-}
-.size-options {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-}
-.size-pill {
-    min-width: 44px;
-    padding: 8px 12px;
-    border: 1px solid var(--border-color);
-    border-radius: 6px;
-    background: #fff;
-    font-family: var(--font-body);
-    font-size: 0.8rem;
-    cursor: pointer;
-    transition: var(--transition);
-}
-.size-pill:hover { border-color: var(--text-primary); }
-.size-pill.active {
-    background: var(--text-primary);
-    color: #fff;
-    border-color: var(--text-primary);
-}
-.modal-qty { justify-content: flex-start; }
-.modal-add-btn {
-    width: 100%;
-    background: var(--text-primary);
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    margin-top: 6px;
-}
-.modal-add-btn:hover {
-    background: var(--accent-gold);
-    color: #fff;
-}
-.modal-warning {
-    font-size: 0.78rem;
-    color: #d9534f;
-    margin-top: 10px;
-    min-height: 1em;
-}
-
-/* --- Floating WhatsApp + back to top --- */
-.fab-whatsapp {
-    position: fixed;
-    right: 20px;
-    bottom: 20px;
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    background: #25D366;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.6rem;
-    z-index: 900;
-    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45);
-    transition: var(--transition);
-}
-.fab-whatsapp:hover { transform: scale(1.08); }
-html[dir="rtl"] .fab-whatsapp { right: auto; left: 20px; }
-
-.back-to-top {
-    position: fixed;
-    right: 20px;
-    bottom: 88px;
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background: var(--text-primary);
-    color: #fff;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.95rem;
-    cursor: pointer;
-    z-index: 900;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(10px);
-    transition: var(--transition);
-}
-.back-to-top.show {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-}
-html[dir="rtl"] .back-to-top { right: auto; left: 20px; }
-
-/* --- Reduced motion --- */
-@media (prefers-reduced-motion: reduce) {
-    .marquee-track { animation: none; }
-    .lookbook-card img,
-    .product-img-box img { transition: none; }
-    html { scroll-behavior: auto; }
-}
-
-/* --- Small screens: new components only --- */
-@media (max-width: 768px) {
-    .form-row { grid-template-columns: 1fr; }
-    .modal-title { font-size: 1.2rem; }
-    .modal-desc { margin-bottom: 16px; }
-    .fab-whatsapp {
-        width: 52px;
-        height: 52px;
-        font-size: 1.45rem;
-        right: 16px;
-        bottom: 16px;
-    }
-    html[dir="rtl"] .fab-whatsapp { right: auto; left: 16px; }
-    .back-to-top {
-        width: 40px;
-        height: 40px;
-        right: 16px;
-        bottom: 78px;
-    }
-    html[dir="rtl"] .back-to-top { right: auto; left: 16px; }
 }

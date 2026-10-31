@@ -200,10 +200,10 @@
                     <span data-i18n="lbShop">اكتشفي التشكيلة</span>
                 </div>
             </div>
-            <div class="lookbook-card" role="button" tabindex="0" onclick="selectCategory('tops')">
-                <img src="tops.jpg" alt="توبات" loading="lazy" decoding="async">
+            <div class="lookbook-card" role="button" tabindex="0" onclick="selectCategory('blouses')">
+                <img src="tops.jpg" alt="بلايز" loading="lazy" decoding="async">
                 <div class="lookbook-overlay">
-                    <h3 data-i18n="lbTops">توبات</h3>
+                    <h3 data-i18n="lbTops">بلايز</h3>
                     <span data-i18n="lbShop">اكتشفي التشكيلة</span>
                 </div>
             </div>
@@ -271,10 +271,16 @@
                 <span data-i18n="labelSubtotal">المجموع الفرعي:</span>
                 <span class="price-val" id="cart-subtotal">0.00 JOD</span>
             </div>
+            <div class="summary-row promo-row" id="promo-row" hidden>
+                <span data-i18n="labelDiscount">خصم عرض 2 بـ 20:</span>
+                <span class="price-val discount-val" id="cart-discount">-0.00 JOD</span>
+            </div>
+            <p class="cart-promo-note" id="promo-note" hidden></p>
             <div class="summary-row delivery-note">
                 <span data-i18n="labelDelivery">رسوم التوصيل:</span>
                 <span id="val-delivery"></span>
             </div>
+            <p class="cart-suit-note" id="suit-note" hidden></p>
             <div class="summary-row total-row">
                 <span data-i18n="labelTotal">المجموع الكلي:</span>
                 <span class="price-val" id="cart-total">0.00 JOD</span>
@@ -286,14 +292,12 @@
         </div>
     </aside>
 
-    <!-- Quick View Modal -->
-    <div class="modal-overlay" id="quick-modal-overlay" onclick="closeQuickView()"></div>
-    <div class="quick-modal" id="quick-modal" role="dialog" aria-modal="true" data-i18n-aria="ariaProduct" aria-label="تفاصيل المنتج">
-        <button class="close-btn modal-close" onclick="closeQuickView()" data-i18n-aria="ariaClose" aria-label="إغلاق"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
-        <div class="modal-content" id="modal-content">
-            <!-- Dynamic Content -->
-        </div>
-    </div>
+   <!-- Quick View Modal Overlay & Container -->
+<div id="quick-modal-overlay" class="modal-overlay"></div>
+<div id="quick-modal" class="modal-container">
+    <button class="close-btn" onclick="closeQuickView()">&times;</button>
+    <div id="modal-content"></div>
+</div>
 
     <!-- Footer -->
     <footer class="footer">
